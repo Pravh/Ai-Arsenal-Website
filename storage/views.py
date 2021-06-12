@@ -2,7 +2,8 @@ from django.contrib.messages.api import info
 from django.shortcuts import render,redirect,HttpResponse
 from .models import AiModel
 from .models import ReviewAiModel
-from .forms import AiModelUpoadForm,ReviewUploadForm,ModelEditForm
+from .models import ContactModel
+from .forms import AiModelUpoadForm,ReviewUploadForm,ModelEditForm,ContactForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
@@ -35,8 +36,12 @@ def upload_form(request):
     if request.method=='GET':
            form = AiModelUpoadForm()
            return render(request,'storage/add.html',{'uploadform':form})
+       
+       
+       
 
 
+       
 
 
 @login_required
@@ -147,6 +152,32 @@ def download_file(request):
         response['Content-Disposition'] = "attachment; filename=%s" % filename
         return response
     return redirect('view_model')
+
+
+
+
+
+
+def Contact_form(request):
+    if request.method=='POST':
+        
+        filled_form=  ContactForm(request.POST,request.FILES) 
+        if filled_form.is_valid():
+            form_data = filled_form.save(commit=False)
+            form_data.uploader = request.user
+            form_data.save()
+            messages.add_message(request,messages.SUCCESS,'AI Model details uploaded successfully')
+            return redirect(to='index')
+
+        else:
+            messages.add_message(request,messages.ERROR,'form detail are invalid ,please check')
+            ctx = {'Contactform':filled_form}
+            return render(request,'users/contact.html',ctx)
+
+        
+    if request.method=='GET':
+           form = ContactForm()
+           return render(request,'users/contact.html',{'Contactform':form})
    
         
 

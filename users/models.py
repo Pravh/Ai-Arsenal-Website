@@ -21,7 +21,13 @@ class UserProfile(models.Model):
 
     def _str_(self):
         return self.user.username
-
+    
+    
+    
+    
+    
+    
+  
 
     
     # class Category(models.Model):                                                    2

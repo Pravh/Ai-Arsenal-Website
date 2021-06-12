@@ -27,4 +27,20 @@ def register(request):
             user.save()
             login(request,user)
             return redirect(reverse('dashboard'))
+        
+        
+def about(request):
+    return render(request,'users/about.html')
+
+
+def team(request):
+    return render(request,'users/team.html')
+
+        
+# def contact(request):
+#     return render(request,'users/contact.html')
+
+
+
+
          

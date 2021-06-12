@@ -15,6 +15,7 @@
 
 {% block content %}
 
+
 <!-- 
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -55,8 +56,9 @@
   </a>
 </div> -->
 
+<!-- This is search  -->
 
-<div class="container">
+<!-- <div class="container my-5">
     <div class="row  justify-content-left">
         <div class="col-l2 my-3">
             <form class="form-inline" action="{% url 'search_ai_model' %}">
@@ -69,10 +71,10 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 
-<div class="container">
+<div class="container my-5">
   <div class="row">
       {% for record in page_obj %}
       <div class="col-lg-6 col-xs-4 my-5">
@@ -150,3 +152,6 @@
   </div>
 </div> -->
 {% endblock content %}
+
+
+  

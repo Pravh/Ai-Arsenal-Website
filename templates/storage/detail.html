@@ -9,10 +9,10 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row my-5">
+<div class="container ">
+    <div class="row ">
         <div class="col-lg-6">
-            <div class="card">
+            <div class="card ">
                 <img src="{{ result.model_image.url }}" class="card-img-top" alt="{{ result.name}}">
                 <div class="card-body">
 
@@ -39,11 +39,22 @@
 
                 </ul>
                 <div class="card-body">
-                    <a href="{% url 'review_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-star" aria-hidden="true"></i> Rate model</a>
-                    <a href="{% url 'edit_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-edit" aria-hidden="true"></i> Edit model</a>
-                    <a href="{% url 'delete_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i> Delete model</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'review_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-star"
+                            aria-hidden="true"></i> Rate model</a>
+
                     <a href="{% url 'download_ai_model' %}?path={{result.model_file.url}}"
                         class="card-link text-danger"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                    {% if user == result.user %}
+                        <a href="{% url 'edit_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-edit"
+                                aria-hidden="true"></i> Edit model</a>
+                        <a href="{% url 'delete_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-trash"
+                                aria-hidden="true"></i> Delete model</a>
+                        {% endif %}
+                    {% endif %}
+
+                    
+
                 </div>
             </div>
         </div>
@@ -58,7 +69,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container ">
     <div class="row mb-5">
         <div class="col-12">
             <h3 class="text-center">Model reviews</h3>
@@ -74,6 +85,7 @@
                 <div class="card-body">
                     <p class="card-text">{{review.detail}}</p>
                     <div>
+                        {{ review.rating }}
 
                     </div>
                 </div>

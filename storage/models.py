@@ -74,3 +74,21 @@ class ReviewAiModel(models.Model):
     def __str__(self):
         return f'{self.title} for {self.aimodel}'
     
+    
+    
+    
+  
+class ContactModel(models.Model):
+    Name = models.CharField(max_length=225,)
+    Email = models.EmailField(max_length=225,)
+    Subject = models.CharField(max_length=225,)
+    Message = models.TextField()
+    
+    def __str__(self):
+        return self.name
+
+    
+    
+    
+    
+    

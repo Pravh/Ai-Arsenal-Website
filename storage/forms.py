@@ -1,5 +1,5 @@
 from django import forms
-from .models import AiModel,ReviewAiModel,ModelEditForm
+from .models import AiModel,ReviewAiModel,ModelEditForm,ContactModel
 
 class AiModelUpoadForm(forms.ModelForm):
     class Meta:
@@ -16,5 +16,13 @@ class ModelEditForm(forms.ModelForm):
     class Meta:
         model = AiModel
         fields=('name','summary','category','model_file','model_image',)
+        
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactModel
+        fields=('Name','Email','Subject','Message',)
+        
+        
+
 
         
