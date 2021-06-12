@@ -6,25 +6,21 @@
 
 
 {% block css %}
-    <style>
-        .container{
-            background-color: aqua;
-            background-image: url("{% static 'img/bg.jpg' %}");
-
-        }
-    </style>
+<style>
+</style>
 {% endblock css %}
 
 
 
 {% block content %}
-    <div class="container">
-        <div class="row justify-content-center mx-auto my-4">
+
+        <div class="body " style="background-image: url('{% static 'img/6.jpeg' %}'); height: 100vh; ">
+        <div class="row justify-content-center ">
             <div class="col-4-mx-auto">
-                <h1 class="text-success">AI-Arsenal</h1>
+                <h1 class="text-warning my-4">AI-Arsenal</h1>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center py-3">
             <div class="col-6">
                 <div class="card my-2">
                     <div class="card-header">
@@ -34,7 +30,7 @@
                         <form method="post">
                             {% csrf_token %}
                             {{form|crispy}}
-                        <button class="btn btn-primary btn-lg btn-block">Login</button>
+                            <button class="btn btn-primary btn-lg btn-block">Login</button>
                         </form>
                     </div>
                 </div>
@@ -46,15 +42,13 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><a href="{% url 'password_reset'%}">Reset password</a><br></li>
                         <li class="list-group-item"><a href="{% url 'register'%}">create account</a><br></li>
-                        <li class="list-group-item"> <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br></li>
-                        <li class="list-group-item"><a href="{% url 'dashboard' %}">Back to dashboard</a></li>   
+                        <li class="list-group-item"> <a href="{% url 'social:begin' 'github' %}">Login with
+                                GitHub</a><br></li>
+                        <li class="list-group-item"><a href="{% url 'dashboard' %}">Back to dashboard</a></li>
                     </ul>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
+  
 {% endblock content %}
-    
-    
-
-

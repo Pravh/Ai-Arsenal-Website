@@ -6,19 +6,25 @@
 
 {% block css %}
     <style>
-       .container{
-          background-color: lightpink;
-       }
+      
     </style>
 {% endblock css %}
 
 {% block content %}
-<div class="container  ">
-   <div class="row  ">
+
+<div class="signup" style="background-image: url('{% static 'img/6.jpeg' %}');">
+<div class="container">
+   <div class="row  justify-content-center py-4">
       <div class="col-lg-8 ">
          <form class="card" method="post" enctype="multipart/form-data">
             <div class="card-header">
-               Upload your Ai model, and fill the detail
+               <div class="row justify-content-center ">
+               
+                  <h3 class="text-warning ">Upload your AI-Model</h3>
+             
+          </div>
+          
+        
             </div>
             <div class="card-body">
                {% csrf_token %}
@@ -37,6 +43,7 @@
               
       </div>
    </div>
+</div>
 </div>
 {% endblock content %}
 
