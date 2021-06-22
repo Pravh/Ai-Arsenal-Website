@@ -13,6 +13,43 @@
 {% endblock css %}
 
 {% block content %}
+
+
+<div class="signup" style="background-image: url('{% static 'img/6.jpeg' %}' );">
+
+   <div class="row justify-content-center ">
+      <div class="col-6">
+         <div class="card my-5">
+            <div class="card-header">
+               <div class="row justify-content-center ">
+
+                  <h4 class="text-warning "> Review Ai model {{ aimodel.name }} , and fill the detail</h4>
+
+               </div>
+
+            </div>
+            <div class="card-body">
+               <form method="POST">
+                  {% csrf_token %}
+                  {{ reviewform|crispy}}
+                  <button class="btn btn-success btn-lg btn-block">Continue</button>
+               </form>
+            </div>
+            <div class="col-lg-6">
+               {% if errors %}
+               {{errors}}
+               {% endif %}
+      
+      
+            </div>
+           
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- 
+
 <div class="container">
    <div class="row my-3">
       <div class="col-lg-8">
@@ -37,7 +74,7 @@
               
       </div>
    </div>
-</div>
+</div> -->
 {% endblock content %}
 
 

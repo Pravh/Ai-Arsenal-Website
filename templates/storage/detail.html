@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<div class="container ">
+<div class="container my-3 ">
     <div class="row ">
         <div class="col-lg-6">
             <div class="card ">
@@ -45,11 +45,12 @@
 
                     <a href="{% url 'download_ai_model' %}?path={{result.model_file.url}}"
                         class="card-link text-danger"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                    {% if user == result.user %}
                         <a href="{% url 'edit_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-edit"
-                                aria-hidden="true"></i> Edit model</a>
-                        <a href="{% url 'delete_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-trash"
-                                aria-hidden="true"></i> Delete model</a>
+                            aria-hidden="true"></i> Edit model</a>
+                    <a href="{% url 'delete_ai_model' pk=result.id %}" class="card-link"><i class="fa fa-trash"
+                            aria-hidden="true"></i> Delete model</a>
+                    {% if user == result.user %}
+                       
                         {% endif %}
                     {% endif %}
 
@@ -62,7 +63,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">detail description</h4>
+                    <h4 class="card-title">Detail Description of Model</h4>
                     <p class="card-text">{{result.summary|linebreaks}}</p>
                 </div>
             </div>
@@ -72,7 +73,7 @@
 <div class="container ">
     <div class="row mb-5">
         <div class="col-12">
-            <h3 class="text-center">Model reviews</h3>
+            <h3 class="text-center">Model Reviews</h3>
         </div>
 
         {% for review in reviews %}
